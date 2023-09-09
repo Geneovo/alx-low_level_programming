@@ -19,13 +19,16 @@ int main(void)
 		{
 			for (tens2 = tens1; tens2 <= 9; tens2++)
 			{
-				for (ones2 = (tens1 == tens2) ? (ones1 + 1) : 0; ones2 <= 9; ones2++)
+				for (ones2 = 0; ones2 <= 9; ones2++)
 				{
-					putchar(tens1 + '0');
-					putchar(ones1 + '0');
-					putchar(' ');
-					putchar(tens2 + '0');
-					putchar(ones2 + '0');
+					if ((tens1 < tens2) || (tens1 == tens2 && ones1 < ones2))
+					{
+						putchar(tens1 + '0');
+						putchar(ones1 + '0');
+						putchar(' ');
+						putchar(tens2 + '0');
+						putchar(ones2 + '0');
+					}
 
 					if (!(tens1 == 9 && ones1 == 9 && tens2 == 9 && ones2 == 9))
 					{
