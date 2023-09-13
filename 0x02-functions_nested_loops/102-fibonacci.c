@@ -13,10 +13,10 @@ int main(void)
 	unsigned long int next;
 	int i;
 
-	printf("%d, ", first);
+	printf("%ld, ", first);
 	for (i = 1; i < 50; i++)
 	{
-		printf("%d", second);
+		printf("%ld", second);
 		next = first + second;
 		first = second;
 		second = next;
