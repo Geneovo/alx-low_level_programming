@@ -10,15 +10,17 @@ int main(void)
 	long int sum = 0;
 	long int first = 1;
 	long int second = 2;
+	long int next;
 
 	while (second <= 4000000)
 	{
 		if (second % 2 == 0)
 			sum += second;
-		long int next = first + second;
-	first = second;
-	second = next;
+		next = first + second;
+		first = second;
+		second = next;
 	}
-	printf("%ld\n", sum)
+
+	printf("%ld\n", sum);
 	return (0);
 }
