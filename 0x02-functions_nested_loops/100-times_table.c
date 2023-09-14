@@ -1,9 +1,8 @@
-#include "main.h"
 #include <stdio.h>
 
 /**
- * print_times_table - prints the 'n' times table, starting with 0
- * @n: The number for which the times table is generated
+ * print_times_table - print the n times table
+ * @n: function parameter
  */
 void print_times_table(int n)
 {
@@ -29,7 +28,7 @@ void print_times_table(int n)
 				}
 				else if (result <= 99 && result >= 10)
 				{
-					_putchar((reult / 10) + '0');
+					_putchar((result / 10) + '0');
 				}
 				_putchar(result % 10 + '0');
 			}
