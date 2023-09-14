@@ -40,6 +40,6 @@ void print_times_table(int n)
 				_putchar('0' + result);
 			}
 		}
-		-putchar('\n');
+		_putchar('\n');
 	}
 }
