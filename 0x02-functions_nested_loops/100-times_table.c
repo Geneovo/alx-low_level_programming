@@ -2,7 +2,7 @@
 
 /**
  * print_times_table - prints the n times table
- * @n: The number of times to print the table
+ * @n: Function parameter
  */
 
 void print_times_table(int n)
@@ -19,11 +19,8 @@ void print_times_table(int n)
 		for (j = 0; j <= n; j++)
 		{
 			result = i * j;
-
 			if (j == 0)
-			{
 				_putchar('0' + result);
-			}
 			else
 			{
 				_putchar(',');
@@ -47,7 +44,6 @@ void print_times_table(int n)
 					_putchar('0' + (result % 10));
 				}
 			}
-		}
-		_putchar('\n');
+			_putchar('\n');
 	}
 }
