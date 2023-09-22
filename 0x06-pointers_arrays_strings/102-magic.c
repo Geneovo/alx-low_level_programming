@@ -1,14 +1,5 @@
 #include <stdio.h>
 
-/**
- * main - Entry point
- *
- * Description: This function serves as the entry point of the program
- * It initializes an array and prints the value of a[2]
- *
- * Return: Always 0 (Success)
- */
-
 int main(void)
 {
 int n;
