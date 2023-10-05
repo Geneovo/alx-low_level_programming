@@ -32,7 +32,7 @@ char **strtow(char *str)
 		if (str[c] != ' ' && (str[c + 1] == ' ' || str[c + 1] == '\0'))
 			height++;
 	{
-		aout = malloc(sizeof(char *) * (height));
+		aout = malloc(sizeof(char *) * (height + 1));
 	}
 	if (aout == NULL || height == 0)
 	{
@@ -47,7 +47,7 @@ char **strtow(char *str)
 				a1++;
 			if (str[c] != ' ' && (str[c + 1] == ' ' || str[c + 1] == '\0'))
 			{
-				aout[i] = malloc((c - a1 + 1) * sizeof(char));
+				aout[i] = malloc((c - a1 + 2) * sizeof(char));
 					if (aout[i] == NULL)
 					{
 						ch_free_grid(aout, i);
