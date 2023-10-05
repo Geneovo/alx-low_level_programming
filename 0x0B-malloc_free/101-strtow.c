@@ -40,8 +40,9 @@ char **strtow(char *str)
 			height++;
 	}
 	aout = malloc(sizeof(char *) * (height));
-	if (aout == NULL)
+	if (aout == NULL || height == 0)
 	{
+		free(aout);
 		return (NULL);
 	}
 	for (i = a1 = 0; i < height; i++)
