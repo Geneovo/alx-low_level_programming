@@ -34,7 +34,7 @@ int is_digit(char *s)
 
 int _strlen(char *s)
 {
-	int i;
+	int i = 0;
 
 	while (s[i] != '\0')
 	{
@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
 		result[i] = 0;
 	for (len1 = len1 - 1; len1 >= 0; len1--)
 	{
-		digit1 = s1[len] - '0';
+		digit1 = s1[len1] - '0';
 		carry = 0;
 		for (len2 = _strlen(s2) - 1; len2 >= 0; len2--)
 		{
@@ -89,7 +89,6 @@ int main(int argc, char *argv[])
 		result[len1 + len2 + 1] = carry % 10;
 		carry /= 10;
 		}
-
 	if (carry > 0)
 		result[len1 + len2 + 1] += carry;
 	}
