@@ -47,7 +47,7 @@ int _strlen(char *s)
  * errors - handle the main errors
  */
 
-void error(void)
+void errors(void)
 {
 	printf("Error\n");
 	exit(98);
@@ -59,7 +59,7 @@ void error(void)
  * @argc: argument count
  * @argv: argument vector
  *
- * Return: 0
+ * Return: alwqays 0 (Success)
  */
 
 int main(int argc, char *argv[])
