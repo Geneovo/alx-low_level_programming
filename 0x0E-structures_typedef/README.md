@@ -1,0 +1,1 @@
+Alx structures, typedef task
