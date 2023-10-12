@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 
 	for (i = 0; i < nbytes; i++)
 	{
-		printf("%02x", opc[1] & 0xFF);
+		printf("%.2hhx", opc[i]);
 		if (i != nbytes - 1)
 			printf(" ");
 	}
