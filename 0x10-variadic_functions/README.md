@@ -1,0 +1,1 @@
+Alx variadic functionsn task
