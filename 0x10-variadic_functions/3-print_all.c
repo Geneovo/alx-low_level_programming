@@ -5,16 +5,18 @@
  *
  * @format: argument specifier
  *
- * Return: any argument given based on specified format
+ * Return: any argument given based on format specifier
  */
 
 void print_all(const char * const format, ...)
 {
-	int i, check_stat; /*declare variables and va_arg datatype */
+	int i, check_stat;
+
 	char *str;
 	va_list spc;
 
-	va_start(spc, format); /* initialize var arguments */
+	va_start(spc, format);
+
 	i = 0;
 	while (format != NULL && format[i] != '\0')
 	{
@@ -37,11 +39,10 @@ void print_all(const char * const format, ...)
 				if (str == NULL)
 					str = "(nil)";
 				printf("%s", str);
-				check_stat = 0;
 				break;
 			default:
 				check_stat = 1;
-					break;
+				break;
 		}
 		if (format[i + 1] != '\0' && check_stat == 0)
 			printf(", ");
