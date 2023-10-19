@@ -5,7 +5,7 @@ int len(const char *str);
  * add_node - add a node to the beginning of the list
  * @head: pointer to the head of the list
  * @str: string to insert to the first position
- * Return: pointer to the first node 
+ * Return: pointer to the first node
  */
 list_t *add_node(list_t **head, const char *str)
 {
