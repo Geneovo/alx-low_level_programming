@@ -3,34 +3,59 @@
 /**
  * add_node_end - this adds a new node at the end
  * of list_t
- * @head: double pointer to the list_t
+ * @head: pointer to the list_t
  * @str: string to put in the new node
- * Return: the address of the nee rlement, or NULL if failed
+ * Return: the address of the new list
+ * or NULL if failed
  */
 
 list_t *add_node_end(list_t **head, const char *str)
 {
-	list_t *new;
-	list_t *temp = *head;
-	unsigned int len = 0;
-
-	while (str[len])
-		len++;
-
-	new = malloc(sizeof(list_t));
-	if (!new)
+	list_t *node, *menu;
+	
+	if (str != NULL)
+	{
+		node = malloc(sizeof(list_t));
+	
+	if (node == NULL)
 		return (NULL);
 
-	new->str = strdup(str);
-	new->len = len;
-	new->next = NULL;
+	node->str = strdup(str);
+	node->len = _strlen(str);
+	node->next = NULL;
 
 	if (*head == NULL)
 	{
-		*head = new;
-		return (new);
+		*head = node;
+		return (*head);
 	}
-	while (temp->next)
-		temp = temp->next;
-	return (new);
+	else
+	{
+		menu = *head;
+		while (menu->next)
+			menu = menu->next;
+
+		menu->next = node;
+		return (menu);
+	}
+	}
+	return (NULL);
+}
+
+/**
+ * _strlen - length of string
+ * @s: string to count
+ * Return: string length
+ */
+
+int _strlen(const char *s)
+{
+	int i = 0;
+
+	while (*s)
+	{
+		s++;
+		i++;
+	}
+	return (i);
 }
