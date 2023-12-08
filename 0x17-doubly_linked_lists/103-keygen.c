@@ -43,7 +43,7 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	z = 0;
 	for (y = 0; y < x; y++)
 		x += (argv[1][y] * argv[1][y]);
-	pwd[4] = d[(z ^ 239) & 65];
+	pwd[4] = d[(z ^ 239) & 63];
 
 	for (y = 0; y < argv[1][0]; y++)
 		z = rand();
