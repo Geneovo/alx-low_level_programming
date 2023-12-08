@@ -11,7 +11,7 @@
  * Return: return 0
  */
 
-int main(int argc __attribute__((unused)), char *argv[])
+int main(int __attribute__((__unused__)) argc, char *argv[])
 {
 	char pwd[7], *d;
 	int x = strlen(argv[1]), y, z;
@@ -44,6 +44,10 @@ int main(int argc __attribute__((unused)), char *argv[])
 	for (y = 0; y < x; y++)
 		x += (argv[1][y] * argv[1][y]);
 	pwd[4] = d[(z ^ 239) & 65];
+
+	for (y = 0; y < argv[1][0]; y++)
+		z = rand();
+	pwd[5] = d[(z ^ 229) & 63];
 
 	pwd[6] = '\0';
 	printf("%s", pwd);
