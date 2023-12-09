@@ -5,29 +5,29 @@
 /**
  * find - this finds the biggest number
  *
- * @un: username
+ * @usrn: username
  * @len: length of username
  *
  * Return: the biggest number
  */
 
-int find(char *un, int len)
+int find(char *usrn, int len)
 {
-	int i;
-	int j;
+	int ch;
+	int vch;
 	unsigned int rand_num;
 
-	i = *un;
-	j = 0;
+	ch = *usrn;
+	vch = 0;
 
-	while (j < len)
+	while (vch < len)
 	{
-		if (i < un[j])
-			i = un[j];
-		j += 1;
+		if (ch < usrn[vch])
+			ch = usrn[vch];
+		vch += 1;
 	}
 
-	srand(i ^ 14);
+	srand(ch ^ 14);
 	rand_num = rand();
 
 	return (rand_num & 63);
@@ -36,49 +36,49 @@ int find(char *un, int len)
 /**
  * mul - this multiplies each char of username
  *
- * @un: username
+ * @usrn: username
  * @len: length of username
  *
  * Return: multiplied char
  */
 
-int mul(char *un, int len)
+int mul(char *usrn, int len)
 {
-	int i;
-	int j;
+	int ch;
+	int vch;
 
-	i = j = 0;
+	ch = vch = 0;
 
-	while (j < len)
+	while (vch < len)
 	{
-		i = i + un[j] * un[j];
-		j += 1;
+		ch = ch + usrn[vch] * usrn[vch];
+		vch += 1;
 	}
 
-	return (((unsigned int)i ^ 239) & 63);
+	return (((unsigned int)ch ^ 239) & 63);
 }
 
 /**
  * gen_char - this generates a random char
  *
- * @un: username
+ * @usrn: username
  *
  * Return: a random char
  */
 
-int gen_char(char *un)
+int gen_char(char *usrn)
 {
-	int i;
-	int j;
+	int ch;
+	int vch;
 
-	i = j = 0;
+	ch = vch = 0;
 
-	while (j < *un)
+	while (vch < *usrn)
 	{
-		i = rand();
-		j += 1;
+		ch = rand();
+		vch += 1;
 	}
-	return (((unsigned int)i ^ 229) & 63);
+	return (((unsigned int)ch ^ 229) & 63);
 }
 
 /**
@@ -93,7 +93,7 @@ int gen_char(char *un)
 int main(int argc, char *argv[])
 {
 	char keygen[7];
-	int len, i, j;
+	int len, ch, vch;
 	long alph[] = {
 		0x3877445248432d41, 0x42394530534e6c37, 0x4d6e706762695432,
 		0x74767a5835737956, 0x2b554c59634a474f, 0x71786636576a6d34,
@@ -105,35 +105,31 @@ int main(int argc, char *argv[])
 	/* ----------- f1 ----------- */
 	keygen[0] = ((char *)alph)[(len ^ 59) & 63];
 	/* ----------- f2 ----------- */
-	i = j = 0;
-
-	while (j < len)
+	ch = vch = 0;
+	while (vch < len)
 	{
-		i = i + argv[1][j];
-		j = j + 1;
+		ch = ch + argv[1][vch];
+		vch = vch + 1;
 	}
-	keygen[1] = ((char *)alph)[(i ^ 79) & 63];
+	keygen[1] = ((char *)alph)[(ch ^ 79) & 63];
 	/* ----------- f3 ----------- */
-	i = 1;
-	j = 0;
-
-	while (j < len)
+	ch = 1;
+	vch = 0;
+	while (vch < len)
 	{
-		i = argv[1][j] * i;
-		j = j + 1;
+		ch = argv[1][vch] * ch;
+		vch = vch + 1;
 	}
-	keygen[2] = ((char *)alph)[(i ^ 85) & 63];
+	keygen[2] = ((char *)alph)[(ch ^ 85) & 63];
 	/* ----------- f4 ----------- */
 	keygen[3] = ((char *)alph)[find(argv[1], len)];
 	/* ----------- f5 ----------- */
 	keygen[4] = ((char *)alph)[mul(argv[1], len)];
 	/* ----------- f6 ----------- */
 	keygen[5] = ((char *)alph)[gen_char(argv[1])];
-	/* ----------- f7 ----------- */
 	keygen[6] = '\0';
-
-	for (i = 0; keygen[i]; i++)
-		printf("%c", keygen[i]);
+	for (ch = 0; keygen[ch]; ch++)
+		printf("%c", keygen[ch]);
 	return (0);
 }
 
