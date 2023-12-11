@@ -1,1 +1,1 @@
-This is the C - Dynamic Libraries ALX Task
+This is C - dynamic libraries ALX project
