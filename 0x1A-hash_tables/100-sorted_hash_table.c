@@ -146,3 +146,32 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
 	}
 	return (NULL);
 }
+
+/**
+ * shash_table_print - Prints a sorted hash table
+ * @ht: Hash Table
+ */
+void shash_table_print(const shash_table_t *ht)
+{
+	unsigned long int i;
+	hash_node_t *temp = NULL;
+	int printed = 0;
+
+	if (!ht)
+		return;
+
+	printf("{");
+	for (i = 0; i < ht->size; i++)
+	{
+		temp = ht->shead;
+		while (temp)
+		{
+			if (printed)
+				printf(", ");
+			printf("'%s': '%s'", temp->key, temp->value);
+			printed = 1;
+			temp = temp->next;
+		}
+	}
+	printf("}\n");
+}
