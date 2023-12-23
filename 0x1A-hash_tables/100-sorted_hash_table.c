@@ -147,4 +147,73 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
 	return (NULL);
 }
 
+/**
+ * shash_table_print - Prints a sorted hash table in order
+ * @ht: Hash Table
+ */
+void shash_table_print(const shash_table_t *ht)
+{
+	shash_node_t *temp;
 
+	if (!ht)
+		return;
+	temp = ht->shead;
+	printf("{");
+	while (temp != NULL)
+	{
+		printf("'%s': '%s'", temp->key, temp->value);
+		temp = temp->snext;
+		if (temp != NULL)
+			printf(", ");
+	}
+	printf("}\n");
+}
+
+/**
+ * shash_table_print_rev - prints a sorted hash table in reverse order
+ * @ht: Hash table
+ */
+void shash_table_print_rev(const shash_table_t *ht)
+{
+	shash_node_t *temp;
+
+	if (ht == NULL)
+		return;
+
+	temp = ht->stail;
+	printf("{");
+	while (temp != NULL)
+	{
+		printf("'%s': '%s'", temp->key, temp->value);
+		temp = temp->sprev;
+		if (temp != NULL)
+			printf(", ");
+	}
+	printf("}\n");
+}
+
+/**
+ * shash_table_delete - This deletes a sorted hash table
+ * @ht: Hash Table
+ */
+void shash_table_delete(shash_table_t *ht)
+{
+	shash_table_t *head = ht;
+	shash_node_t *node, *temp;
+
+	if (ht == NULL)
+		return;
+
+	node = ht->shead;
+	while (node)
+	{
+		temp = node->snext;
+		free(node->key);
+		free(node->value);
+		free(node);
+		node = temp;
+	}
+
+	free(head->array);
+	free(head);
+}
