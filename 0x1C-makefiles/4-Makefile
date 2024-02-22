@@ -1,28 +1,19 @@
-#!/usr/bin/python3
-"""Defines an island perimeter measuring function."""
+CC = gcc
+SRC = main.c school.c
+Obj = $(SRC:.c=.o)
+NAME = school
+RM = rm -f
+CFLAGS = -Wall -Werror -Wextra -pedantic
 
+all: $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
 
-def island_perimeter(grid):
-	"""Return the parameter of an island.
+clean:
+	$(RM) *~ #(NAME)
 
-	The grid represents water by 0 and land by 1
+oclean:
+	$(RM) $(OBJ)
 
-	Args:
-		grid (list): A list of list of integers representing island.
-	Returns:
-		The perimeter of the island defined in grid
-	"""
-	width = len(grid[0])
-	height = len(grid)
-	edges = 0
-	size = 0
+fclean: clean oclean
 
-	for i in range(height):
-	    for j in range(width):
-	        if grid[i][j] == 1:
-		    size += 1
-		    if (j > 0 and grid[i][j - 1] == 1):
-		        edges += 1
-		    if (i > 0 and grid[i - 1][j] == 1):
-		        edges += 1
-	return size * 4 - edges * 2
+re: fclean all
